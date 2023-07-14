@@ -1,0 +1,29 @@
+ Here's a detailed explanation of the program, including the modules used, keywords, functions, and their usage.
+
+The program is implemented in C and uses several standard libraries to interact with the Linux file system. These libraries include stdio.h, stdlib.h, fcntl.h, unistd.h, sys/types.h, and sys/stat.h.
+
+The program begins by defining two constants:
+
+MAX_FILENAME: Represents the maximum length of a filename.
+MAX_BUFFER_SIZE: Specifies the maximum size of the buffer used for reading and writing file data.
+Next, the program defines several functions to perform file operations, including file creation, deletion, reading, writing, and directory listing.
+
+createFile(): This function creates a new file with the specified filename. It uses the creat() system call provided by Linux, which creates a new file and sets its permissions. The function takes the filename as a parameter and uses the S_IRUSR, S_IWUSR, S_IRGRP, S_IWGRP, and S_IROTH flags to specify read and write permissions for the user, group, and others. If the file creation fails, the perror() function is used to display an error message.
+
+deleteFile(): This function deletes a file with the specified filename. It uses the unlink() system call, which removes the link to a file, effectively deleting it from the file system. If the deletion fails, the perror() function is used to display an error message.
+
+readFile(): This function reads and displays the contents of a file with the specified filename. It uses the open() system call with the O_RDONLY flag to open the file in read-only mode. It then reads the file data using the read() system call and writes it to the standard output using the write() function. If there are any errors during file opening or reading, the perror() function is used to display an error message.
+
+writeFile(): This function writes the specified data to a file with the specified filename. It uses the open() system call with the O_WRONLY, O_CREAT, and O_TRUNC flags to open the file in write-only mode, create the file if it doesn't exist, and truncate its contents if it does exist. The function also sets the file permissions using the S_IRUSR, S_IWUSR, S_IRGRP, S_IWGRP, and S_IROTH flags. It then uses the write() system call to write the data to the file. If there are any errors during file opening or writing, the perror() function is used to display an error message.
+
+listFiles(): This function lists the files in the specified directory. It uses the opendir() function to open the directory and the readdir() function to read the directory entries one by one. It then displays the filenames using the printf() function. If there are any errors during directory opening or reading, the perror() function is used to display an error message.
+
+In the main() function, the program prompts the user to enter filenames and data for file creation, writing, reading, and deletion. It calls the corresponding functions with the user-provided values to perform the file operations.
+
+By executing the program, you can interactively create, write to, read, and delete files, as well as list files in a directory.
+
+In summary, this program demonstrates basic file operations, file permissions, directory management, and error handling in a Linux file system using system calls and standard C libraries. It provides functions to create, delete, read, and write files, as well as list files in a directory. The program can be extended and modified to incorporate additional features or integrated into a larger system as needed.
+
+
+
+
